@@ -20,6 +20,7 @@ ipython kernel install --name "k-pce" --user
 ```
 
 **Make sure that ~/.dbt/profiles.yml has the correct content**
+
 `~/.dbt/profiles.yml` should have the following content: 
 ```
 exploration:
