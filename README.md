@@ -19,7 +19,8 @@ ipython kernel install --name "k-pce" --user
 
 ```
 
-**Make ~/.dbt/profiles.yml has the correct content**
+**Make sure that ~/.dbt/profiles.yml has the correct content**
+
 `~/.dbt/profiles.yml` should have the following content: 
 ```
 exploration:
@@ -36,7 +37,7 @@ exploration:
   target: dev
 ```
 
-**To recreate the folder structure and baseline files**
+**If you need to recreate the folder structure and baseline files**
 1. Initialize the dbt structure with: `dbt init temp`
 2. Remove the readme because we'll use the existing one: `rm temp/README.md`
 3. Remove the example content because we don't need it: `rm temp/models/example/*` and `rmdir temp/models/example`
