@@ -1,0 +1,12 @@
+name: pce-env
+dependencies:
+  - pip
+  - python
+  - pycaret
+  - shap
+  - psutil
+  - sqlalchemy
+  - jupyter
+  - pylint
+  - pip:
+    - dbt
