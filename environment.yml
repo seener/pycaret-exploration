@@ -5,9 +5,9 @@ dependencies:
   - pycaret
   - shap
   - psutil
-  - sqlalchemy
   - jupyter
   - pylint
   - simplejson
+  - psycopg2
   - pip:
     - dbt
