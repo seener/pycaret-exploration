@@ -12,11 +12,11 @@
     "SCALAR_FACTOR": "object",
     "SCALAR_ID": "int64",
     "VECTOR": "object",
-    "COORDINATE": "float64",
+    "COORDINATE": "object",
     "VALUE": "float64",
     "STATUS": "object",
-    "SYMBOL": "float64",
-    "TERMINATED": "float64",
+    "SYMBOL": "object",
+    "TERMINATED": "object",
     "DECIMALS": "int64"
   },
   "is_numeric": {
