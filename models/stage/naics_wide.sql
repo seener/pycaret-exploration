@@ -1,5 +1,6 @@
 WITH naics_wide AS (
-    SELECT 
+    SELECT
+        geo.id,
         lf.ref_year,
         geo.code, 
         geo.geo_name, 
@@ -15,11 +16,11 @@ WITH naics_wide AS (
         )}}
     FROM {{ref('naics')}} AS lf
     INNER JOIN {{ref('attribute_short_name')}} AS names ON lf.attribute = names.description
-    INNER JOIN {{ref('geo_info')}} AS geo USING ("GEO")
-    GROUP BY lf.ref_year, geo.code, geo.geo_name, geo.geo_level_id, geo.geo_level_name, geo.parent_code, geo.geo_parent_name
-    ORDER BY geo.geo_level_id, geo.parent_code, geo.code, lf.ref_year
+    INNER JOIN {{ref('geo_year')}} AS geo ON geo."GEO" = lf."GEO" AND geo.ref_year = lf.ref_year
+    GROUP BY geo.id, lf.ref_year, geo.code, geo.geo_name, geo.geo_level_name, geo.geo_parent_name
+    ORDER BY geo.id
 )
-SELECT ref_year, code, geo_name, geo_parent_name, geo_level_name,
+SELECT id, ref_year, code, geo_name, geo_parent_name, geo_level_name,
 naics_employed, 
 naics_goods, 
 naics_agriculture, naics_natural_resources,naics_ultilities, naics_construction, naics_manufacturing, 

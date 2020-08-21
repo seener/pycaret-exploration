@@ -1,5 +1,6 @@
 WITH nocs_wide AS (
     SELECT 
+        geo.id,
         lf.ref_year,
         geo.code, 
         geo.geo_name, 
@@ -15,11 +16,11 @@ WITH nocs_wide AS (
         )}}
     FROM {{ref('nocs')}} AS lf
     INNER JOIN {{ref('attribute_short_name')}} AS names ON lf.attribute = names.description
-    INNER JOIN {{ref('geo_info')}} AS geo USING ("GEO")
-    GROUP BY lf.ref_year, geo.code, geo.geo_name, geo.geo_level_id, geo.geo_level_name, geo.parent_code, geo.geo_parent_name
-    ORDER BY geo.geo_level_id, geo.parent_code, geo.code, lf.ref_year
+    INNER JOIN {{ref('geo_year')}} AS geo ON geo."GEO" = lf."GEO" AND geo.ref_year = lf.ref_year
+    GROUP BY geo.id, lf.ref_year, geo.code, geo.geo_name, geo.geo_level_name, geo.geo_parent_name
+    ORDER BY geo.id
 )
-SELECT ref_year, code, geo_name, geo_parent_name, geo_level_name,
+SELECT id, ref_year, code, geo_name, geo_parent_name, geo_level_name,
 nocs_employed, 
 nocs_management, nocs_management_senior, nocs_management_specialized, nocs_management_retail, nocs_management_trades,
 nocs_business, nocs_business_pro, nocs_business_admin, nocs_business_finance, nocs_business_office, nocs_business_distribution, 
