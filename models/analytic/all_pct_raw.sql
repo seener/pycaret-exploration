@@ -76,6 +76,6 @@ WITH all_pct_raw AS (
         CASE WHEN nocs_employed = 0 THEN 0 ELSE nocs_manufacturing_operators / nocs_employed END AS nocs_manufacturing_operators,
         CASE WHEN nocs_employed = 0 THEN 0 ELSE nocs_manufacturing_assemblers / nocs_employed END AS nocs_manufacturing_assemblers,
         CASE WHEN nocs_employed = 0 THEN 0 ELSE nocs_manufacturing_labourers / nocs_employed END AS nocs_manufacturing_labourers
-    FROM {{ref('all_wide')}}
+    FROM {{ref('all_wide_raw')}}
 )
 SELECT * FROM all_pct_raw
