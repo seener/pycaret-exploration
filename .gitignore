@@ -6,3 +6,4 @@ logs/
 .ipynb_checkpoints
 __pycache__
 *.log
+catboost_info
