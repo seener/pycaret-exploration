@@ -19,8 +19,7 @@ suppress AS (
 	INNER JOIN dev.geo_year AS geo ON ts.ref_year = geo.ref_year AND ts."GEO" = geo."GEO"
 ),
 all_suppression AS (
-    SELECT 
-        lbf.*,
+    SELECT lbf.*,
         {{dbt_utils.star(from=ref('naics_suppression'), except=['id', 'ref_year', 'code', 'geo_name', 'geo_level_id', 'geo_level_name', 'geo_parent_name'])}},
         {{dbt_utils.star(from=ref('nocs_suppression'),  except=['id', 'ref_year', 'code', 'geo_name', 'geo_level_id', 'geo_level_name', 'geo_parent_name'])}},
         suppress.total_col,

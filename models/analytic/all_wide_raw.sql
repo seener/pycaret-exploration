@@ -1,6 +1,5 @@
 WITH all_wide_raw AS (
-    SELECT 
-        lbf.*,
+    SELECT lbf.*,
         {{dbt_utils.star(from=ref('naics_wide'), except=['id', 'ref_year', 'code', 'geo_name', 'geo_level_id', 'geo_level_name', 'geo_parent_name'])}},
         {{dbt_utils.star(from=ref('nocs_wide'),  except=['id', 'ref_year', 'code', 'geo_name', 'geo_level_id', 'geo_level_name', 'geo_parent_name'])}}
     FROM {{ref('labourforce_wide')}} AS lbf
