@@ -1,7 +1,13 @@
 WITH geo_info AS (
      SELECT DISTINCT
-          CASE WHEN LEFT("DGUID", 4) = '' THEN NULL
-               WHEN "GEO" = 'Canada' THEN '01'
+          CASE WHEN "GEO" = 'Canada' THEN '01'
+               WHEN "GEO" = 'South Coast-Burin Peninsula and Notre Dame-Central Bonavista Bay, Newfoundland and Labrador' THEN '1099'
+               WHEN "GEO" = 'Côte-Nord and Nord-du-Québec, Quebec' THEN '2499'
+               WHEN "GEO" = 'Parklands and Northern, Manitoba' THEN '4699'
+               WHEN "GEO" = 'South Central and North Central, Manitoba' THEN '4689'
+               WHEN "GEO" = 'Prince Albert and Northern, Saskatchewan' THEN '4799'
+               WHEN "GEO" = 'Banff-Jasper-Rocky Mountain House and Athabasca-Grande Prairie-Peace River, Alberta' THEN '4899'
+               WHEN "GEO" = 'North Coast and Nechako, British Columbia' THEN '5999'
                WHEN CAST(LEFT("DGUID", 4) AS INTEGER) = 2011 THEN RIGHT("DGUID", 4)
                ELSE RIGHT("DGUID", 2) 
           END AS code,
