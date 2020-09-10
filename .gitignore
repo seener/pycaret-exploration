@@ -8,3 +8,5 @@ __pycache__
 *.log
 catboost_info
 mlruns
+*.pkl
+all_imputation_out_*.csv
